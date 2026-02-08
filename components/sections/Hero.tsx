@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Code, Zap } from 'lucide-react'
 import Image from 'next/image'
 import GlitterEffect from '@/components/GlitterEffect'
+import { basePath } from '@/lib/basePath'
 import { useState, useEffect } from 'react'
 
 const headings = [
@@ -90,7 +91,7 @@ export default function Hero() {
               }}
             >
               <Image
-                src="/images/fiza-saif.jpeg"
+                src={`${basePath}/images/fiza-saif.jpeg`}
                 alt="Fiza Saif"
                 fill
                 className="object-cover"

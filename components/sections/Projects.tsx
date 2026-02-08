@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import { basePath } from '@/lib/basePath'
 
 interface Project {
   title: string
@@ -206,7 +207,7 @@ export default function Projects() {
                   >
                     <div className="relative w-full h-40 sm:h-48 lg:h-56 bg-background-primary">
                       <Image
-                        src={project.image}
+                        src={`${basePath}${project.image}`}
                         alt={project.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Mail, Linkedin, MessageCircle, Send } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
+import { basePath } from '@/lib/basePath'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -181,7 +182,7 @@ export default function Contact() {
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                   <div className="relative w-20 h-20 sm:w-24 sm:h-24 mb-3 sm:mb-4 rounded-full overflow-hidden border-2 border-accent/20">
                     <Image
-                      src="/images/fiza-saif.jpeg"
+                      src={`${basePath}/images/fiza-saif.jpeg`}
                       alt="Fiza Saif"
                       fill
                       className="object-cover"

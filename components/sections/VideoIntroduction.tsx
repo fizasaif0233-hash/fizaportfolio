@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { basePath } from '@/lib/basePath'
 
 export default function VideoIntroduction() {
   return (
@@ -32,12 +33,12 @@ export default function VideoIntroduction() {
           >
             <video
               className="w-full h-full object-cover"
-              src="/videos/fiza-intro-video.mp4"
+              src={`${basePath}/videos/fiza-intro-video.mp4`}
               title="Fiza Saif – Meet the Developer"
               controls
               playsInline
               preload="metadata"
-              poster="/images/fiza-saif.jpeg"
+              poster={`${basePath}/images/fiza-saif.jpeg`}
             >
               Your browser does not support the video tag.
             </video>

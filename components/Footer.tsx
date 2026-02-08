@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Mail, Linkedin, MessageCircle } from 'lucide-react'
+import { basePath } from '@/lib/basePath'
 
 export default function Footer() {
   return (
@@ -23,7 +24,7 @@ export default function Footer() {
               transition={{ type: 'spring', stiffness: 300 }}
             >
               <Image
-                src="/images/fiza-saif.jpeg"
+                src={`${basePath}/images/fiza-saif.jpeg`}
                 alt="Fiza Saif"
                 fill
                 className="object-cover"
