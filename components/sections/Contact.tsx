@@ -41,8 +41,11 @@ export default function Contact() {
       let response: Response
 
       if (formspreeId) {
-        // Formspree works with github.io and other static hosts (no domain block).
-        response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        // Formspree: use only the form ID (e.g. xpqjbwep). If full URL was pasted, extract ID.
+        const formId = formspreeId.includes('formspree.io')
+          ? formspreeId.replace(/.*\/f\//, '').replace(/\/?$/, '')
+          : formspreeId.trim()
+        response = await fetch(`https://formspree.io/f/${formId}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
