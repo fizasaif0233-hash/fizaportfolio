@@ -79,17 +79,18 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <motion.div 
-              className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto mb-6 sm:mb-8 rounded-full overflow-hidden border-4 border-accent/20 shadow-soft-lg"
-              animate={{
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
+            <div style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' as const }}>
+              <motion.div 
+                className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto mb-6 sm:mb-8 rounded-full overflow-hidden border-4 border-accent/20 shadow-soft-lg"
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
               <Image
                 src={`${basePath}/images/fiza-saif.jpeg`}
                 alt="Fiza Saif"
@@ -113,14 +114,18 @@ export default function Hero() {
                   ease: 'easeInOut',
                 }}
               />
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-4 sm:mb-6 leading-tight px-4 min-h-[1.2em]">
+            <div
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-4 sm:mb-6 leading-tight px-4 min-h-[1.2em]"
+              style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' as const }}
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentHeadingIndex}
@@ -129,13 +134,18 @@ export default function Hero() {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
                   className="text-center"
+                  style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' as const }}
                 >
-                  <span className="bg-gradient-to-r from-text-primary via-accent to-text-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[shimmer_3s_ease-in-out_infinite]">
+                  <span
+                    className="bg-gradient-to-r from-text-primary via-accent to-text-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[shimmer_3s_ease-in-out_infinite]"
+                    style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' as const }}
+                  >
                     {displayText}
                     <motion.span
                       animate={{ opacity: [1, 0] }}
                       transition={{ duration: 0.8, repeat: Infinity, repeatType: 'reverse' }}
                       className="inline-block w-0.5 sm:w-1 h-[0.9em] bg-accent ml-1 sm:ml-2 align-middle"
+                      style={{ backfaceVisibility: 'hidden' as const }}
                     />
                   </span>
                 </motion.div>

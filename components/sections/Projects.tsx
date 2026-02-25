@@ -71,7 +71,7 @@ const projects: Project[] = [
     impact: 'Enabled logistics companies to streamline operations with fast implementation and comprehensive management tools.',
     features: ['Warehouse Management', 'Transport Tracking', 'AI Optimization', 'Real-time Updates', 'White-Label'],
     tags: ['Next.js', 'React', 'AI', 'TypeScript', 'Real-time'],
-    demoUrl: 'https://omniwtms.com',
+    demoUrl: 'https://www.omniwtms.com',
     image: '/images/omniwtms.com',
   },
   {
@@ -93,7 +93,7 @@ const projects: Project[] = [
     impact: 'Enabled entrepreneurs to build leverage through systematic education and practical case studies.',
     features: ['Curriculum System', 'Course Delivery', 'Case Studies', 'Student Dashboard', 'Progress Tracking'],
     tags: ['Next.js', 'React', 'TypeScript', 'Education Tech'],
-    demoUrl: 'https://leverageacademy.vercel.app',
+    demoUrl: 'https://leverageacademy.org',
     image: '/images/leverageacademy.vercel.app.png',
   },
   {
@@ -126,7 +126,7 @@ const projects: Project[] = [
     impact: 'Created a premium online shopping experience that reflects the brand\'s luxury positioning and enables personalized product recommendations.',
     features: ['E-commerce Platform', 'Product Catalog', 'AI Assessments', 'Shopping Cart', 'Checkout System'],
     tags: ['Next.js', 'React', 'E-commerce', 'AI', 'TypeScript'],
-    demoUrl: 'https://alkhemmy-com.vercel.app',
+    demoUrl: 'https://alkhemmy.com',
     image: '/images/alkhemmy-com.vercel.app.png',
   },
   {
@@ -137,7 +137,7 @@ const projects: Project[] = [
     impact: 'Enabled agencies to offer professional SEO services with white-label capabilities, serving 10,000+ businesses.',
     features: ['AI SEO Audits', 'Keyword Tracking', 'Competitor Analysis', 'White-Label Reports', 'Agency Tools'],
     tags: ['Next.js', 'React', 'AI', 'SEO Tools', 'TypeScript'],
-    demoUrl: 'https://seoinforce.com',
+    demoUrl: 'https://www.seoinforce.com',
     image: '/images/seoinforce.com',
   },
   {
@@ -148,7 +148,7 @@ const projects: Project[] = [
     impact: 'Created a trusted platform for collectors worldwide to buy and sell authenticated luxury items safely.',
     features: ['Marketplace Platform', 'Authentication System', 'Seller Dashboard', 'Secure Transactions', 'Access Control'],
     tags: ['Next.js', 'React', 'E-commerce', 'TypeScript', 'Authentication'],
-    demoUrl: 'https://flip-republic-com.vercel.app',
+    demoUrl: 'https://fliprepublic.com',
     image: '/images/flip-republic-com.vercel.app.png',
   },
   {
