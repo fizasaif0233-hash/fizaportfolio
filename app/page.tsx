@@ -6,6 +6,7 @@ import HowIWork from '@/components/sections/HowIWork'
 import VideoIntroduction from '@/components/sections/VideoIntroduction'
 import Services from '@/components/sections/Services'
 import Pricing from '@/components/sections/Pricing'
+import LiveClientMessages from '@/components/sections/LiveClientMessages'
 import Reviews from '@/components/sections/Reviews'
 import FAQ from '@/components/sections/FAQ'
 import Contact from '@/components/sections/Contact'
@@ -26,6 +27,7 @@ export default function Home() {
       <VideoIntroduction />
       <Services />
       <Pricing />
+      <LiveClientMessages />
       <Reviews />
       <FAQ />
       <Contact />
