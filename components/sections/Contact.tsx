@@ -6,6 +6,8 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { basePath } from '@/lib/basePath'
 
+const FORMSPREE_FORM_ID = 'xpqjbwep' // https://formspree.io/f/xpqjbwep — submissions go to your Formspree email
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -22,12 +24,12 @@ export default function Contact() {
     setSubmitStatus('idle')
     setFormNotConfigured(false)
 
-    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
+    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || FORMSPREE_FORM_ID
     const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
     const isStaticHost = typeof window !== 'undefined' && /github\.io|pages\.dev/i.test(window.location.hostname)
 
     try {
-      // GitHub Pages / static: need Formspree or Web3Forms (no /api/contact).
+      // GitHub Pages / static: use Formspree (hardcoded) or Web3Forms; no /api/contact.
       if (isStaticHost && !formspreeId && !web3FormsKey) {
         setFormNotConfigured(true)
         setSubmitStatus('error')
@@ -41,9 +43,8 @@ export default function Contact() {
       let response: Response
 
       if (formspreeId) {
-        // Formspree: use only the form ID. Extract from URL if full URL was pasted in secret.
         const raw = String(formspreeId).trim()
-        const match = raw.match(/formspree\.io\/f\/([a-zA-Z0-9]+)/) || raw.match(/^([a-zA-Z0-9]{6,})$/);
+        const match = raw.match(/formspree\.io\/f\/([a-zA-Z0-9]+)/) || raw.match(/^([a-zA-Z0-9]{6,})$/)
         const formId = match ? match[1] : raw.replace(/.*\//, '').replace(/\?.*$/, '').trim() || raw
         response = await fetch(`https://formspree.io/f/${formId}`, {
           method: 'POST',
