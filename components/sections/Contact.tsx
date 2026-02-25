@@ -20,14 +20,33 @@ export default function Contact() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
+    const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+      let response: Response
+
+      // GitHub Pages (static): use Web3Forms. Local dev: use /api/contact (nodemailer).
+      if (web3FormsKey) {
+        response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: web3FormsKey,
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            subject: `Portfolio: New message from ${formData.name}`,
+            from_name: formData.name,
+          }),
+        })
+      } else {
+        const apiUrl = `${basePath ? basePath : ''}/api/contact`
+        response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        })
+      }
 
       if (response.ok) {
         setSubmitStatus('success')
