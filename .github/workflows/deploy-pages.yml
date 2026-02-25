@@ -33,7 +33,8 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: '/fizaportfolio'
-          # Contact form on GitHub Pages (get key at https://web3forms.com)
+          # Contact form: Formspree (works with github.io) or Web3Forms
+          NEXT_PUBLIC_FORMSPREE_FORM_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_FORM_ID }}
           NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY }}
 
       - name: Upload artifact

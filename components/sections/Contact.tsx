@@ -22,12 +22,13 @@ export default function Contact() {
     setSubmitStatus('idle')
     setFormNotConfigured(false)
 
+    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
     const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
     const isStaticHost = typeof window !== 'undefined' && /github\.io|pages\.dev/i.test(window.location.hostname)
 
     try {
-      // GitHub Pages / static host: must use Web3Forms (no /api/contact). Avoid 405.
-      if (isStaticHost && !web3FormsKey) {
+      // GitHub Pages / static: need Formspree or Web3Forms (no /api/contact).
+      if (isStaticHost && !formspreeId && !web3FormsKey) {
         setFormNotConfigured(true)
         setSubmitStatus('error')
         setTimeout(() => {
@@ -39,7 +40,19 @@ export default function Contact() {
 
       let response: Response
 
-      if (web3FormsKey) {
+      if (formspreeId) {
+        // Formspree works with github.io and other static hosts (no domain block).
+        response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            _subject: `Portfolio: New message from ${formData.name}`,
+          }),
+        })
+      } else if (web3FormsKey) {
         const payload = {
           name: formData.name,
           email: formData.email,
