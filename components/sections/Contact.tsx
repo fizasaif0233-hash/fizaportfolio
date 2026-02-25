@@ -41,10 +41,10 @@ export default function Contact() {
       let response: Response
 
       if (formspreeId) {
-        // Formspree: use only the form ID (e.g. xpqjbwep). If full URL was pasted, extract ID.
-        const formId = formspreeId.includes('formspree.io')
-          ? formspreeId.replace(/.*\/f\//, '').replace(/\/?$/, '')
-          : formspreeId.trim()
+        // Formspree: use only the form ID. Extract from URL if full URL was pasted in secret.
+        const raw = String(formspreeId).trim()
+        const match = raw.match(/formspree\.io\/f\/([a-zA-Z0-9]+)/) || raw.match(/^([a-zA-Z0-9]{6,})$/);
+        const formId = match ? match[1] : raw.replace(/.*\//, '').replace(/\?.*$/, '').trim() || raw
         response = await fetch(`https://formspree.io/f/${formId}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

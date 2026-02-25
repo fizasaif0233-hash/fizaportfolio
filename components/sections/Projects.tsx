@@ -160,7 +160,7 @@ const projects: Project[] = [
     features: ['Service Showcase', 'Case Studies', 'Blog System', 'Consultation Booking', 'Business Bundles'],
     tags: ['Next.js', 'React', 'TypeScript', 'Agency Website'],
     demoUrl: 'https://www.khamareclarke.com',
-    image: '/images/khamareclarke.png',
+    image: '/images/www.identimarketing.com', // add khamareclarke.png to public/images to replace
   },
 ]
 
