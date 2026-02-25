@@ -111,31 +111,19 @@ const liveMessages: LiveMessage[] = [
   },
 ]
 
+const INITIAL_VISIBLE = 6 // Show 6 messages immediately so section is never empty (flags + cards visible on first paint)
+
 export default function LiveClientMessages() {
-  const [visibleCount, setVisibleCount] = useState(0)
-  const [isInView, setIsInView] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-    const el = document.getElementById('live-messages-section')
-    if (el) observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!isInView) return
     const total = liveMessages.length
     if (visibleCount >= total) return
-    const t = setTimeout(() => setVisibleCount((c) => c + 1), 400)
-    return () => clearTimeout(t)
-  }, [isInView, visibleCount])
+    const t = setInterval(() => {
+      setVisibleCount((c) => (c >= total ? c : c + 1))
+    }, 400)
+    return () => clearInterval(t)
+  }, [visibleCount])
 
   return (
     <section
