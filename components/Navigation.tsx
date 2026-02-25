@@ -21,7 +21,6 @@ export default function Navigation() {
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Pricing', href: '#pricing' },
-    { label: 'Live messages', href: '#live-messages' },
     { label: 'Reviews', href: '#reviews' },
     { label: 'Contact', href: '#contact' },
   ]

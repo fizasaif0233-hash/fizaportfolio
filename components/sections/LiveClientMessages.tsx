@@ -31,81 +31,81 @@ interface LiveMessage {
 const liveMessages: LiveMessage[] = [
   {
     id: '1',
-    name: 'James K.',
+    name: 'Alex T.',
     country: 'United Kingdom',
     flag: '🇬🇧',
-    role: 'Founder, MyApproved',
-    message: 'Our platform went live in 5 days. Fiza is incredibly responsive and delivered beyond our expectations.',
+    role: 'Business Owner',
+    message: 'Hi, can you see my requirements? I need a quote for a small business website.',
     timeAgo: 'Just now',
     delay: 0,
   },
   {
     id: '2',
-    name: 'Sarah M.',
+    name: 'Morgan L.',
     country: 'United States',
     flag: '🇺🇸',
-    role: 'CEO, AdsStarter',
-    message: 'Best developer we\'ve worked with. Clear communication and the ad platform runs flawlessly.',
+    role: 'Startup Founder',
+    message: 'Can you fix my website? It\'s broken on mobile and I need it working by next week.',
     timeAgo: '2m ago',
     delay: 0.2,
   },
   {
     id: '3',
-    name: 'Michael C.',
+    name: 'Jordan P.',
     country: 'Canada',
     flag: '🇨🇦',
-    role: 'Ops, OmniWTMS',
-    message: '48-hour setup was real. The WMS she built is powering our entire logistics operation.',
+    role: 'Marketing Manager',
+    message: 'We need someone to build a landing page like the ones in your portfolio. Can you help?',
     timeAgo: '5m ago',
     delay: 0.4,
   },
   {
     id: '4',
-    name: 'Emma R.',
-    country: 'United Kingdom',
-    flag: '🇬🇧',
-    role: 'Manager, Nelly\'s Logistics',
-    message: '2,500+ clients on the platform. Instant quotes and 24/7 support—everything we asked for.',
+    name: 'Casey R.',
+    country: 'Australia',
+    flag: '🇦🇺',
+    role: 'Entrepreneur',
+    message: 'I have a project brief ready. Can you look at my requirements and let me know if you can do this?',
     timeAgo: '8m ago',
     delay: 0.6,
   },
   {
     id: '5',
-    name: 'David W.',
-    country: 'United States',
-    flag: '🇺🇸',
-    role: 'Director, IdentiMarketing',
-    message: 'Our agency site attracts UK & US clients. Professional, fast, and she understood our brand.',
+    name: 'Riley N.',
+    country: 'UAE',
+    flag: '🇦🇪',
+    role: 'E-commerce Owner',
+    message: 'Do you build online stores? I need a new website for my business. Can you fix or rebuild?',
     timeAgo: '12m ago',
     delay: 0.8,
   },
   {
     id: '6',
-    name: 'Lisa A.',
-    country: 'Australia',
-    flag: '🇦🇺',
-    role: 'Product, Inboker',
-    message: 'Booking engine live in days. Our users love it. Would hire Fiza again without hesitation.',
+    name: 'Sam K.',
+    country: 'Germany',
+    flag: '🇩🇪',
+    role: 'Freelancer',
+    message: 'Hi, can you fix my website and add a few new features? I\'ll share the details.',
     timeAgo: '15m ago',
     delay: 1,
   },
   {
     id: '7',
-    name: 'Robert M.',
-    country: 'Germany',
-    flag: '🇩🇪',
-    role: 'Founder, SEOInForce',
-    message: '10K+ agencies use our SEO platform. White-label and AI tools—all built to spec. Outstanding.',
+    name: 'Taylor M.',
+    country: 'India',
+    flag: '🇮🇳',
+    role: 'Product Owner',
+    message: 'Looking for a full-stack developer for a 2-month project. Are you available?',
     timeAgo: '18m ago',
     delay: 1.2,
   },
   {
     id: '8',
-    name: 'Jennifer B.',
-    country: 'UAE',
-    flag: '🇦🇪',
-    role: 'E-commerce, Alkhemmy',
-    message: 'Luxury skincare site is live. AI assessments are a hit. She gets premium brands.',
+    name: 'Jamie F.',
+    country: 'Singapore',
+    flag: '🇸🇬',
+    role: 'Director',
+    message: 'Can you build something like the dashboards in your portfolio for our team? Need a quote.',
     timeAgo: '22m ago',
     delay: 1.4,
   },
@@ -170,11 +170,11 @@ export default function LiveClientMessages() {
             <span className="text-sm font-semibold text-accent">LIVE</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4 sm:mb-6 px-4">
-            Messages from clients
+            Incoming inquiries
           </h2>
           <div className="h-1 w-20 bg-accent mx-auto mb-4 sm:mb-6 rounded-full" />
           <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto px-4">
-            Real feedback from international clients—delivered on time, every time
+            New contacts from around the world asking for quotes, fixes, and projects
           </p>
         </motion.div>
 
@@ -216,7 +216,7 @@ export default function LiveClientMessages() {
                 </p>
                 <div className="mt-3 pt-3 border-t border-background-primary/50 flex items-center gap-1.5 text-accent/70">
                   <MessageCircle size={14} />
-                  <span className="text-xs">Client message</span>
+                  <span className="text-xs">Inquiry</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -229,7 +229,7 @@ export default function LiveClientMessages() {
             animate={{ opacity: 1 }}
             className="text-center text-sm text-text-secondary mt-6"
           >
-            More messages coming in...
+            More inquiries coming in...
           </motion.p>
         )}
       </div>

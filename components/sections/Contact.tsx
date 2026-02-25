@@ -14,18 +14,31 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [formNotConfigured, setFormNotConfigured] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setFormNotConfigured(false)
 
     const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+    const isStaticHost = typeof window !== 'undefined' && /github\.io|pages\.dev/i.test(window.location.hostname)
 
     try {
+      // GitHub Pages / static host: must use Web3Forms (no /api/contact). Avoid 405.
+      if (isStaticHost && !web3FormsKey) {
+        setFormNotConfigured(true)
+        setSubmitStatus('error')
+        setTimeout(() => {
+          setSubmitStatus('idle')
+          setFormNotConfigured(false)
+        }, 10000)
+        return
+      }
+
       let response: Response
 
-      // GitHub Pages (static): use Web3Forms. Local dev: use /api/contact (nodemailer).
       if (web3FormsKey) {
         response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
@@ -183,7 +196,15 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm"
                   >
-                    Something went wrong. Please try again or contact me directly via email.
+                    {formNotConfigured ? (
+                      <>
+                        Form is not set up on this host yet. Please email me directly at{' '}
+                        <a href="mailto:fizasaif0233@gmail.com" className="underline font-medium">fizasaif0233@gmail.com</a>
+                        {' '}or use WhatsApp below.
+                      </>
+                    ) : (
+                      'Something went wrong. Please try again or contact me directly via email.'
+                    )}
                   </motion.div>
                 )}
               </form>
