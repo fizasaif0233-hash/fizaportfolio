@@ -40,17 +40,17 @@ export default function Contact() {
       let response: Response
 
       if (web3FormsKey) {
-        response = await fetch('https://api.web3forms.com/submit', {
+        const payload = {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio: New message from ${formData.name}`,
+          botcheck: '',
+        }
+        response = await fetch(`https://api.web3forms.com/submit/${web3FormsKey}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            access_key: web3FormsKey,
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            subject: `Portfolio: New message from ${formData.name}`,
-            from_name: formData.name,
-          }),
+          body: JSON.stringify(payload),
         })
       } else {
         const apiUrl = `${basePath ? basePath : ''}/api/contact`
